@@ -99,7 +99,7 @@ class EventHandler:
             if not self._window.zoom_mode == preferences.ZOOM_MODE_BEST:
                 self._scroll_with_flipping(0, 50)
             else:
-                self._window.next_page()
+                self._window.actiongroup.get_action('fit_width_mode').activate()
         elif event.keyval in (gtk.keysyms.Up, gtk.keysyms.KP_Up, gtk.keysyms.k):
             if not self._window.zoom_mode == preferences.ZOOM_MODE_BEST:
                 self._scroll_with_flipping(0, -50)
@@ -191,7 +191,11 @@ class EventHandler:
                     else:
                         if not self._window.scroll(x_step, 0):
                             if not self._window.scroll(0, y_step):
-                                self._window.next_page()
+                                if (self._window.zoom_mode != preferences.ZOOM_MODE_BEST):
+                                    self._window.next_page()
+                                    self._window.actiongroup.get_action('best_fit_mode').activate()
+                                else:
+                                    self._window.actiongroup.get_action('fit_width_mode').activate()
                             else:
                                 self._window.scroll_to_fixed(
                                     horiz='startfirst')
