@@ -1,3 +1,15 @@
+This is a small hack for the Comix comics viewer which changes smart
+space behaviour.
+
+I like to see the entire page before I zoom in on it, so whenever it moves
+to the next page, it goes to best fit mode. And when in best fit mode,
+smart space will go to width mode, so I can read the small letters.
+
+It is built over a hack which adds vi style scrolling, but it can be
+merged into vanilla Comix quite easily.
+
+Original README below.
+
 - Comix README -
 
 === About =====================================================================
